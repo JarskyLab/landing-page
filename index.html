@@ -1,43 +1,160 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Наша команда</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JarskyLab — Applied AI Team</title>
   <style>
-    body { font-family: sans-serif; margin: 2rem; line-height: 1.6; }
-    h1 { color: #2c3e50; }
-    section { margin-bottom: 2rem; }
+    :root {
+      --bg: #ffffff;
+      --text: #222222;
+      --accent: #0070f3;
+      --muted: #888888;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 0.5rem 0 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .project, .member {
+      margin-bottom: 1.2rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 1rem;
+      border-top: 1px solid #eee;
+    }
   </style>
 </head>
 <body>
-  <h1>Мы — команда AI-разработчиков</h1>
+
+<header>
+  <h1>JarskyLab</h1>
+  <p>Applied AI, NLP, and Computer Vision for real-world tasks</p>
+</header>
+
+<main>
 
   <section>
-    <h2>О нас</h2>
-    <p>Мы — команда из трёх инженеров, специализирующихся на NLP, CV и интеграции ML в бизнес-процессы.</p>
+    <h2>About Us</h2>
+    <p>
+      We are a small team of AI engineers working on applied machine learning projects for industry partners. 
+      Our expertise spans NLP, computer vision, and real-time inference systems. We deliver fast, maintainable and impactful ML solutions.
+    </p>
   </section>
 
   <section>
-    <h2>Проекты</h2>
-    <ul>
-      <li>#</li>
-    </ul>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <strong>Automated Support Ticket Classification (NDA)</strong><br>
+      <span class="muted">BERT + FastAPI pipeline, boosted classification accuracy by 12%</span>
+    </div>
+
+    <div class="project">
+      <strong>Real-time Object Detection (NDA)</strong><br>
+      <span class="muted">Custom YOLOv5 + OpenCV pipeline for low-latency use cases in production</span>
+    </div>
+
+    <div class="project">
+      <strong><a href="https://github.com/placeholder/text2svg">Text2SVG</a></strong><br>
+      <span class="muted">Open-source tool to generate SVG icons from natural language prompts</span>
+    </div>
+
   </section>
 
   <section>
-    <h2>Наша команда</h2>
-    <ul>
-      <li><strong>#</strong>: #</li>
-      <li><strong>#</strong>: #</li>
-      <li><strong>#</strong>: #</li>
-    </ul>
+    <h2>Team</h2>
+
+    <div class="member">
+      <strong>Alex S.</strong> — Computer Vision, FastAPI, Real-time systems<br>
+      <span class="muted">ex-Startup CTO, MSc in AI</span>
+    </div>
+
+    <div class="member">
+      <strong>Daria K.</strong> — NLP, Generative models, Analytics<br>
+      <span class="muted">researcher, linguist, prompt engineer</span>
+    </div>
+
+    <div class="member">
+      <strong>Ivan M.</strong> — MLOps, Data Engineering, MLflow<br>
+      <span class="muted">DevOps background, automates everything</span>
+    </div>
+
   </section>
 
   <section>
-    <h2>Контакты</h2>
-    <p>Email: yourteam@example.com<br>
-    Telegram: @yourteam</p>
+    <h2>Contact</h2>
+    <p>
+      📧 Email: <a href="mailto:team@example.com">team@example.com</a><br>
+      💬 Telegram: <a href="https://t.me/yourteam">@yourteam</a><br>
+      🧪 GitHub: <a href="https://github.com/JarskyLab">JarskyLab</a>
+    </p>
   </section>
+
+</main>
+
+<footer>
+  &copy; 2025 JarskyLab. Built with HTML + GitHub Pages.
+</footer>
+
 </body>
 </html>
+```
