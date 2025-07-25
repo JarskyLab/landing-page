@@ -4,160 +4,703 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JarskyLab — Applied AI Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #222222;
-      --accent: #0070f3;
-      --muted: #888888;
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #1a1a2e;
+      --bg-card: rgba(255, 255, 255, 0.05);
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --accent-primary: #00d4ff;
+      --accent-secondary: #7c3aed;
+      --accent-tertiary: #10b981;
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient-ai: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+      --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
     }
 
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 58, 237, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+      z-index: -2;
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--accent-primary);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .particle:nth-child(odd) {
+      background: var(--accent-secondary);
+      animation-duration: 8s;
+    }
+
+    .particle:nth-child(3n) {
+      background: var(--accent-tertiary);
+      animation-duration: 10s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      25% { transform: translateY(-20px) rotate(90deg); opacity: 1; }
+      50% { transform: translateY(-40px) rotate(180deg); opacity: 0.8; }
+      75% { transform: translateY(-20px) rotate(270deg); opacity: 1; }
+    }
+
+    /* Header */
     header {
-      padding: 2.5rem 1rem 1.5rem;
+      position: relative;
+      padding: 3rem 2rem;
       text-align: center;
-      border-bottom: 1px solid #eee;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      font-weight: 600;
-    }
-
-    header p {
-      color: var(--muted);
-      font-size: 1rem;
-      margin: 0.5rem 0 0;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      margin-bottom: 2.5rem;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .project, .member {
-      margin-bottom: 1.2rem;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      padding: 1rem;
-      border-top: 1px solid #eee;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.2);
     }
 
     .header-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-ai);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-tertiary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: white;
+      box-shadow: var(--shadow-glow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: var(--shadow-glow); }
+      50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 212, 255, 0.5); }
     }
 
     .language-switcher {
-      font-size: 0.95rem;
+      font-size: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .language-switcher:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .language-switcher a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .language-switcher a:hover {
+      color: var(--text-primary);
+      text-shadow: 0 0 10px var(--accent-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: var(--gradient-ai);
+      border-radius: 50%;
+      opacity: 0.1;
+      transform: translate(-50%, -50%);
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-ai);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Main */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      margin-bottom: 5rem;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: var(--gradient-tertiary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-tertiary);
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gradient-tertiary);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-card);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, rgba(103, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    }
+
+    .member-card {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+      position: relative;
+    }
+
+    .member-card .avatar {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-ai);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--text-primary);
+    }
+
+    .card p, .card span {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .card a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .card a:hover {
+      color: var(--text-primary);
+      text-shadow: 0 0 10px var(--accent-primary);
+    }
+
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-secondary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Contact Section */
+    .contact-methods {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      background: var(--gradient-primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(103, 126, 234, 0.4);
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(103, 126, 234, 0.6);
+    }
+
+    .contact-btn.telegram {
+      background: var(--gradient-tertiary);
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+    }
+
+    .contact-btn.telegram:hover {
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      margin-top: 5rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-text {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-tech {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent-primary);
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-methods {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Tech background pattern */
+    .tech-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -3;
+      animation: tech-move 20s linear infinite;
+    }
+
+    @keyframes tech-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
     }
 
   </style>
 </head>
 <body>
 
+<div class="tech-pattern"></div>
+<div class="particles" id="particles"></div>
+
 <header>
-  <div class="header-wrapper">
-    <h1>JarskyLab</h1>
+  <div class="header-wrapper fade-in">
+    <div class="logo">
+      <div class="logo-icon">AI</div>
+      <h1>JarskyLab</h1>
+    </div>
     <div class="language-switcher">
       <b>ru</b> | <a href="/landing-page/en">en</a>
     </div>
   </div>
 </header>
 
+<section class="hero fade-in">
+  <h1>Applied AI Team</h1>
+  <p>Небольшая команда инженеров, работающих с задачами машинного обучения. Основные направления нашей экспертизы — обработка естественного языка (NLP), компьютерное зрение и аналитика данных.</p>
+</section>
+
 <main>
 
-  <section>
-    <h2>О нас</h2>
-    <p>
-      Мы — небольшая команда инженеров, работающих с задачами машинного обучения. Основные направления нашей экспертизы — обработка естественного языка (NLP), компьютерное зрение и аналитика данных. Мы реализуем точечные решения, направленные на решение конкретных задач — от классификации текстов до систем технического зрения.
-    </p>
+  <section class="fade-in">
+    <h2>Наша экспертиза</h2>
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-number">0.97</span>
+        <span class="stat-label">Точность ML</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">3+</span>
+        <span class="stat-label">Экспертов</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Поддержка</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Качество</span>
+      </div>
+    </div>
   </section>
 
-  <section>
+  <section class="fade-in">
     <h2>Проекты</h2>
+    <div class="cards-grid">
+      <div class="card project-card">
+        <h3>🤖 Мультиклассовый классификатор текстов</h3>
+        <p>Разработали решение для автоматической классификации текстов, повысив точность с 0.76 до 0.97. Использовали современные архитектуры трансформеров и техники fine-tuning.</p>
+        <span class="muted">Проект под NDA • ML Engineering • NLP</span>
+      </div>
 
-    <div class="project">
-      <strong>Мультиклассовый классификатор текстов (NDA)</strong><br>
-      <span class="muted">разработали решение, повысив точность с 0.76 до 0.97</span>
+      <div class="card project-card">
+        <h3>🔍 Системы компьютерного зрения</h3>
+        <p>Реализация систем технического зрения для промышленности. Детекция объектов, анализ изображений в реальном времени с высокой точностью.</p>
+        <span class="muted">Computer Vision • Real-time Processing</span>
+      </div>
+
+      <div class="card project-card">
+        <h3>📊 Аналитика больших данных</h3>
+        <p>Построение аналитических систем и дашбордов для принятия бизнес-решений. Продвинутый SQL, ETL процессы и визуализация данных.</p>
+        <span class="muted">Data Analytics • Business Intelligence</span>
+      </div>
     </div>
-
   </section>
 
-  <section>
+  <section class="fade-in">
     <h2>Команда</h2>
-  
-    <div class="member">
-      <strong>Иван Жарский</strong> — компьютерное зрение, системы реального времени<br>
-      <span class="muted">старший инженер в Statanly, аспирант ИТМО</span>
-    </div>
-  
-    <div class="member">
-      <strong><a href="/landing-page/cv/boris-malashenko">Борис Малашенко</a></strong> — обработка естественного языка, LLM<br>
-      <span class="muted">работал в VK Lab, аспирант ИТМО</span>
-    </div>
-  
+    <div class="cards-grid">
+      <div class="card member-card">
+        <div class="avatar">И</div>
+        <h3>Иван Жарский</h3>
+        <p><strong>Computer Vision Engineer</strong></p>
+        <p>Специалист по компьютерному зрению и системам реального времени. Старший инженер в Statanly, аспирант ИТМО.</p>
+        <span class="muted">CV • Real-time Systems • Deep Learning</span>
+      </div>
 
-    <div class="member">
-      <strong>Владислав Трохин</strong> — аналитика данных, SQL<br>
-      <span class="muted">аналитик в NTech</span>
+      <div class="card member-card">
+        <div class="avatar">Б</div>
+        <h3><a href="/landing-page/cv/boris-malashenko">Борис Малашенко</a></h3>
+        <p><strong>NLP Engineer & LLM Specialist</strong></p>
+        <p>Эксперт по обработке естественного языка и больших языковых моделей. Опыт работы в VK Lab, аспирант ИТМО.</p>
+        <span class="muted">NLP • LLM • Transformers • Research</span>
+      </div>
+
+      <div class="card member-card">
+        <div class="avatar">В</div>
+        <h3>Владислав Трохин</h3>
+        <p><strong>Data Analyst</strong></p>
+        <p>Специалист по аналитике данных и SQL оптимизации. Аналитик в NTech с глубокими знаниями в области BI.</p>
+        <span class="muted">Data Analytics • SQL • Business Intelligence</span>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>
-      💬 Telegram: <a href="https://t.me/btmalov">@btmalov</a><br>
-      📧 Email: #</a><br>
-    </p>
+  <section class="fade-in">
+    <h2>Связаться с нами</h2>
+    <div class="contact-methods">
+      <a href="https://t.me/btmalov" class="contact-btn telegram">
+        💬 Telegram
+      </a>
+      <a href="mailto:hello@jarskylab.ai" class="contact-btn">
+        📧 Email
+      </a>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  &copy; 2025 JarskyLab
+  <div class="footer-content fade-in">
+    <div class="footer-text">&copy; 2025 JarskyLab — Applied AI Solutions</div>
+    <div class="footer-tech">Powered by Intelligence • Built with ❤️</div>
+  </div>
 </footer>
+
+<script>
+// Создание частиц
+function createParticles() {
+  const particlesContainer = document.getElementById('particles');
+  const particleCount = 50;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 6 + 's';
+    particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+    particlesContainer.appendChild(particle);
+  }
+}
+
+// Анимация появления элементов при скролле
+function handleScrollAnimations() {
+  const elements = document.querySelectorAll('.fade-in');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  elements.forEach(element => {
+    observer.observe(element);
+  });
+}
+
+// Инициализация
+document.addEventListener('DOMContentLoaded', () => {
+  createParticles();
+  handleScrollAnimations();
+  
+  // Показать первые элементы сразу
+  setTimeout(() => {
+    document.querySelector('header .fade-in').classList.add('visible');
+  }, 300);
+  
+  setTimeout(() => {
+    document.querySelector('.hero').classList.add('visible');
+  }, 600);
+});
+
+// Параллакс эффект для мыши
+document.addEventListener('mousemove', (e) => {
+  const particles = document.querySelectorAll('.particle');
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
+  
+  particles.forEach((particle, index) => {
+    const speed = (index % 3 + 1) * 0.5;
+    const xMove = (x - 0.5) * speed;
+    const yMove = (y - 0.5) * speed;
+    
+    particle.style.transform += ` translate(${xMove}px, ${yMove}px)`;
+  });
+});
+</script>
 
 </body>
 </html>
