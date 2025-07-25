@@ -4,48 +4,157 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Борис Малашенко — NLP Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-light: #6b7280;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --muted: #9ca3af;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #ffffff;
-      color: #222222;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      color: var(--text);
       line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-light);
+    }
+
     main {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
-    h1, h2, h3 {
-      color: #0070f3;
+
+    header {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+      text-align: center;
     }
+
+    h1 {
+      color: var(--accent);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 0;
+    }
+
     section {
-      margin-bottom: 2.5rem;
+      background: var(--card-bg);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
     }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .emoji {
+      font-size: 1.3rem;
+    }
+
     a {
-      color: #0070f3;
+      color: var(--accent);
       text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
     }
+
     a:hover {
+      color: var(--accent-light);
       text-decoration: underline;
     }
-    .muted {
-      color: #888888;
-    }
+
     ul {
-      padding-left: 1.2rem;
+      padding-left: 1.5rem;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .contact-emoji {
+      font-size: 1.2rem;
+      width: 24px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 <main>
-  <h1>Борис Малашенко</h1>
-  <p class="muted">Специализируюсь на обработке естественного языка (NLP) и открыт к интересным коллаборациям и проектам.</p>
+  <a href="/landing-page/" class="back-link">
+    ← Назад к команде
+  </a>
+
+  <header>
+    <h1>Борис Малашенко</h1>
+    <p class="subtitle">Специализируюсь на обработке естественного языка (NLP) и открыт к интересным коллаборациям и проектам.</p>
+  </header>
 
   <section>
-    <h2>🎓 Образование</h2>
+    <h2><span class="emoji">🎓</span>Образование</h2>
     <ul>
       <li><strong>Аспирантура по искусственному интеллекту</strong>, Университет ИТМО (2024–н.в.)</li>
       <li><strong>Магистратура по машинному обучению и анализу данных</strong>, ВШЭ (2022–2024)</li>
@@ -54,7 +163,7 @@
   </section>
 
   <section>
-    <h2>💻 Опыт</h2>
+    <h2><span class="emoji">💻</span>Опыт</h2>
     <ul>
       <li><strong>Научный сотрудник</strong>, VK Lab (2023–2025) — NLP, исследование энкодеров предложений</li>
       <li><strong>NLP-консультант</strong>, проект под NDA (2025) — разработка и обучение классификатора для индустриального применения</li>
@@ -62,7 +171,7 @@
   </section>
 
   <section>
-    <h2>🚀 Проекты</h2>
+    <h2><span class="emoji">🚀</span>Проекты</h2>
     <ul>
       <li><strong>2023</strong>
         <ul>
@@ -85,7 +194,7 @@
   </section>
 
   <section>
-    <h2>🎬 Конференции</h2>
+    <h2><span class="emoji">🎬</span>Конференции</h2>
     <ul>
       <li><strong>ISSCAI</strong>: "USER: Универсальный энкодер текстов для русского языка" [<a href="https://github.com/BlessedTatonka/Pet-Projects/blob/main/Conferences/IDOConf%202025/Тезис.docx">Тезис</a>]  [<a href="https://github.com/BlessedTatonka/Pet-Projects/blob/main/Universal%20Sentence%20Encoder%20for%20Russian/files/ISSCAI_USER_poster.jpg">Постер</a>]</li>
       <li><strong>IDOConf</strong>: "Text-Level Distillation: How to Build Small but Powerful Sentence Encoders" [<a href="https://github.com/BlessedTatonka/Pet-Projects/blob/main/Conferences/IDOConf%202025/Тезис.docx">Тезис</a>]  [<a href="https://github.com/BlessedTatonka/Pet-Projects/blob/main/Conferences/IDOConf%202025/Презентация.pdf">Презентация</a>]</li>
@@ -95,22 +204,31 @@
   </section>
 
   <section>
-    <h2>🛠 Навыки</h2>
+    <h2><span class="emoji">🛠</span>Навыки</h2>
     <p>Python, PyTorch, Transformers<br>Базовый SQL, Git<br>Английский C1</p>
   </section>
 
   <section>
-    <h2>🌟 Участие в сообществе</h2>
+    <h2><span class="emoji">🌟</span>Участие в сообществе</h2>
     <p>Ассистент курса "Программная инженерия"</p>
   </section>
 
   <section>
-    <h2>💌 Контакты</h2>
-    <p>
-      HuggingFace: <a href="https://huggingface.co/TatonkaHF">TatonkaHF</a><br>
-      Email: <a href="mailto:btmalashenko@itmo.ru">btmalashenko@itmo.ru</a> | <a href="mailto:boristmal@gmail.com">boristmal@gmail.com</a><br>
-      Telegram: <a href="https://t.me/btmalov">@btmalov</a>
-    </p>
+    <h2><span class="emoji">💌</span>Контакты</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-emoji">🤗</span>
+        <span>HuggingFace: <a href="https://huggingface.co/TatonkaHF">TatonkaHF</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-emoji">📧</span>
+        <span>Email: <a href="mailto:btmalashenko@itmo.ru">btmalashenko@itmo.ru</a> | <a href="mailto:boristmal@gmail.com">boristmal@gmail.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-emoji">💬</span>
+        <span>Telegram: <a href="https://t.me/btmalov">@btmalov</a></span>
+      </div>
+    </div>
   </section>
 </main>
 </body>

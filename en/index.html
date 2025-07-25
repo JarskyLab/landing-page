@@ -4,103 +4,291 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JarskyLab — Applied AI Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
-      --text: #222222;
-      --accent: #0070f3;
-      --muted: #888888;
+      --text: #1a1a1a;
+      --text-light: #6b7280;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --muted: #9ca3af;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--bg);
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
       color: var(--text);
       line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     header {
-      padding: 2.5rem 1rem 1.5rem;
-      text-align: center;
-      border-bottom: 1px solid #eee;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: white;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 2.5rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
     }
 
     header p {
-      color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin: 0.5rem 0 0;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      margin-bottom: 2.5rem;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .project, .member {
-      margin-bottom: 1.2rem;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      padding: 1rem;
-      border-top: 1px solid #eee;
+      opacity: 0.9;
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
     }
 
     .header-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .language-switcher {
       font-size: 0.95rem;
+      font-weight: 500;
     }
+
+    .language-switcher a {
+      color: rgba(255, 255, 255, 0.8);
+      transition: color 0.2s ease;
+    }
+
+    .language-switcher a:hover {
+      color: white;
+    }
+
+    main {
+      max-width: 900px;
+      margin: -1rem auto 2rem;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      background: var(--card-bg);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    section:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin: 0 0 1.5rem 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2::before {
+      content: '';
+      width: 4px;
+      height: 1.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      border-radius: 2px;
+    }
+
+    .project, .member {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .project:hover, .member:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent-light);
+    }
+
+    .project:last-child, .member:last-child {
+      margin-bottom: 0;
+    }
+
+    .project strong, .member strong {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    /* Clickable member cards */
+    .member-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .member-link:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .member-link .member {
+      cursor: pointer;
+    }
+
+    .member-link .member:hover {
+      background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+      font-weight: 400;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .contact-emoji {
+      font-size: 1.2rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      background: var(--card-bg);
+      font-weight: 400;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .header-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      main {
+        margin-top: 1rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+      }
+      
+      .project, .member {
+        padding: 1.25rem;
+      }
+    }
+
+    /* Smooth loading animation */
+    section {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
   </style>
 </head>
 <body>
 
 <header>
   <div class="header-wrapper">
-    <h1>JarskyLab</h1>
+    <div>
+      <h1>JarskyLab</h1>
+      <p>Applied AI Team</p>
+    </div>
     <div class="language-switcher">
-      <a href="../">ru</a> | <b>en</b>
+      <a href="/landing-page/">ru</a> | <b>en</b>
     </div>
   </div>
 </header>
@@ -110,7 +298,7 @@
   <section>
     <h2>About Us</h2>
     <p>
-      We are a small team of engineers working on applied machine learning. Our expertise includes natural language processing (NLP), computer vision, and data analytics. We focus on well-scoped, practical projects — from text classification systems to industrial visual pipelines.
+      We are a small team of engineers working on machine learning challenges. Our main areas of expertise include natural language processing (NLP), computer vision, and data analytics. We develop targeted solutions aimed at solving specific problems — from text classification to technical vision systems.
     </p>
   </section>
 
@@ -118,37 +306,49 @@
     <h2>Projects</h2>
 
     <div class="project">
-      <strong>Multiclass Text Classifier (NDA)</strong><br>
-      <span class="muted">Developed a solution that improved accuracy from 0.76 to 0.97</span>
+      <strong>Multi-class Text Classifier (NDA)</strong><br>
+      <div class="muted">developed a solution, improving accuracy from 0.76 to 0.97</div>
     </div>
 
   </section>
 
   <section>
     <h2>Team</h2>
-
-    <div class="member">
-      <strong>Ivan Jarsky</strong> — Computer Vision, Real-Time Systems<br>
-      <span class="muted">Senior Engineer at Statanly, PhD student at ITMO</span>
-    </div>
-
-    <div class="member">
-      <strong><a href="/landing-page/cv/boris-malashenko">Boris Malashenko</a></strong> — Natural Language Processing, LLMs<br>
-      <span class="muted">Former researcher at VK Lab, PhD student at ITMO</span>
-    </div>
-
-    <div class="member">
-      <strong>Vladislav Trokhin</strong> — Data Analytics, SQL<br>
-      <span class="muted">Analyst at NTech</span>
-    </div>
+   
+    <a href="/landing-page/cv/ivan-zharsky" class="member-link">
+      <div class="member">
+        <strong>Ivan Zharsky</strong> — computer vision, real-time systems<br>
+        <div class="muted">senior engineer at Statanly, PhD student at ITMO</div>
+      </div>
+    </a>
+   
+    <a href="/landing-page/cv/boris-malashenko" class="member-link">
+      <div class="member">
+        <strong>Boris Malashenko</strong> — natural language processing, LLM<br>
+        <div class="muted">worked at VK Lab, PhD student at ITMO</div>
+      </div>
+    </a>
+   
+    <a href="/landing-page/cv/vladislav-trokhin" class="member-link">
+      <div class="member">
+        <strong>Vladislav Trokhin</strong> — data analytics, SQL<br>
+        <div class="muted">analyst at NTech</div>
+      </div>
+    </a>
   </section>
 
   <section>
     <h2>Contact</h2>
-    <p>
-      💬 Telegram: <a href="https://t.me/btmalov">@btmalov</a><br>
-      📧 Email: #</a><br>
-    </p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-emoji">💬</span>
+        <span>Telegram: <a href="https://t.me/btmalov">@btmalov</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-emoji">📧</span>
+        <span>Email: <a href="mailto:contact@jarskylab.com">contact@jarskylab.com</a></span>
+      </div>
+    </div>
   </section>
 
 </main>

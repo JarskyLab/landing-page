@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Иван Жарский — Computer Vision Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-light: #6b7280;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --muted: #9ca3af;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-light);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--accent);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    section {
+      background: var(--card-bg);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .emoji {
+      font-size: 1.3rem;
+    }
+
+    .coming-soon {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--muted);
+    }
+
+    .coming-soon h3 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .coming-soon p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .contact-emoji {
+      font-size: 1.2rem;
+      width: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <a href="/landing-page/" class="back-link">
+    ← Назад к команде
+  </a>
+
+  <header>
+    <h1>Иван Жарский</h1>
+    <p class="subtitle">Computer Vision Engineer & Real-Time Systems Specialist</p>
+  </header>
+
+  <section>
+    <h2><span class="emoji">👋</span>О себе</h2>
+    <p>
+      Специализируюсь на компьютерном зрении и разработке систем реального времени. 
+      Работаю старшим инженером в Statanly и продолжаю исследования в аспирантуре ИТМО.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">🎓</span>Образование</h2>
+    <ul>
+      <li><strong>Аспирантура по искусственному интеллекту</strong>, Университет ИТМО (н.в.)</li>
+      <li><strong>Магистратура по информационным технологиям</strong></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💻</span>Опыт</h2>
+    <ul>
+      <li><strong>Старший инженер</strong>, Statanly — разработка систем компьютерного зрения</li>
+      <li><strong>Специализация</strong> — системы реального времени, обработка изображений</li>
+    </ul>
+  </section>
+
+  <section class="coming-soon">
+    <h3>🚧 Страница в разработке</h3>
+    <p>
+      Подробная информация о проектах, публикациях и достижениях будет добавлена в ближайшее время.
+      <br><br>
+      Пока что вы можете связаться со мной через контакты команды JarskyLab.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="emoji">💌</span>Контакты</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-emoji">💬</span>
+        <span>Telegram: <a href="https://t.me/btmalov">@btmalov</a> (общие вопросы)</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-emoji">📧</span>
+        <span>Email: <a href="mailto:contact@jarskylab.com">contact@jarskylab.com</a></span>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html> 
